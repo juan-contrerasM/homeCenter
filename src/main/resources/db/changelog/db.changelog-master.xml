@@ -1,0 +1,12 @@
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
+
+    <!-- Importa los archivos de cambios SQL específicos -->
+    <changeSet id="1" author="juan">
+        <sqlFile path="db/changelog/V1__crear_tabla_producto.sql" />
+    </changeSet>
+
+</databaseChangeLog>
