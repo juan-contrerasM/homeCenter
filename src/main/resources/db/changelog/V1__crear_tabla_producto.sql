@@ -1,4 +1,4 @@
-create table direcciones
+create table IF NOT EXISTS direcciones
 (
     id_direccion int primary key auto_increment,
     calle        varchar(30),
@@ -6,9 +6,9 @@ create table direcciones
     numero       varchar(30)
 );
 
-create table clientes
+create table IF NOT EXISTS clientes
 (
-    cedula_cliente   varchar(30) primary key,
+    cedula_cliente  bigint  primary key,
     nombre           varchar(60),
     primer_apellido  varchar(60),
     segundo_apellido varchar(60),
@@ -17,23 +17,22 @@ create table clientes
         direcciones (id_direccion)
 );
 
-create table tipo_telefono
+create table IF NOT EXISTS tipo_telefono
 (
-    id_tipo_telefono int primary key auto_increment,
+    id_tipo_telefono bigint primary key auto_increment,
     nombre           varchar(30)
 );
 
-create table telefono_clientes
-(
+create table IF NOT EXISTS telefono_clientes (
     numero           varchar(30),
-    cedula_cliente   varchar(30),
-    id_tipo_telefono int,
-    primary key (cedula_cliente, id_tipo_telefono),
+    cedula_cliente   bigint,
+    id_tipo_telefono bigint,
+    primary key (cedula_cliente, id_tipo_telefono),  -- Clave primaria compuesta
     foreign key (cedula_cliente) references clientes (cedula_cliente),
     foreign key (id_tipo_telefono) references tipo_telefono (id_tipo_telefono)
 );
 
-create table ventas
+create table   IF NOT EXISTS ventas
 (
     id_ventas         int primary key auto_increment,
     descripcion       varchar(200),
@@ -41,26 +40,27 @@ create table ventas
     total             float(5, 2),
     cantidad_producto int,
     impuesto          float(5, 2),
-    cedula_cliente    varchar(30),
+    cedula_cliente    bigint,
     foreign key (cedula_cliente) references clientes (cedula_cliente)
 );
 
 
-create table tipo_producto
+create table IF NOT EXISTS tipo_producto
 (
     id_tipo_producto int primary key auto_increment,
-    nombre           varchar(30)
+    descripcion         varchar(120)
 );
 
 
-create table areas
+create table IF NOT EXISTS areas
 (
     id_area int primary key auto_increment,
-    nombre  varchar(40)
+    nombre  varchar(40),
+    descripcion varchar(120)
 );
 
 
-create table productos
+create table IF NOT EXISTS productos
 (
     id_producto      int primary key auto_increment,
     nombre           varchar(40),
@@ -73,7 +73,7 @@ create table productos
 );
 
 
-create table ventas_productos
+create table IF NOT EXISTS ventas_productos
 (
     cantidad    int,
     valor       float(5, 2),
@@ -85,7 +85,7 @@ create table ventas_productos
 );
 
 
-create table proveedores
+create table  IF NOT EXISTS proveedores
 (
     cedula    varchar(30) primary key,
     nombre    varchar(40),
@@ -94,14 +94,14 @@ create table proveedores
 );
 
 
-create table estados
+create table IF NOT EXISTS estados
 (
     id_estado int primary key auto_increment,
     nombre    varchar(30)
 );
 
 
-create table operadores
+create table  IF NOT EXISTS operadores
 (
     cedula                varchar(40) primary key,
     nombre                varchar(60),
@@ -111,7 +111,8 @@ create table operadores
 );
 
 
-create table pyps
+create table IF NOT EXISTS pyps
+
 (
     id_pyp                 int primary key auto_increment,
     cedula                 varchar(30),
@@ -121,7 +122,7 @@ create table pyps
 );
 
 
-create table rotura
+create table  IF NOT EXISTS rotura
 (
     id_rotura   int primary key auto_increment,
     descripcion varchar(40),
@@ -131,23 +132,14 @@ create table rotura
 );
 
 
-create table producto_rotura
-(
-    fecha       date,
-    id_producto int,
-    id_rotura   int,
-    primary key (id_producto,id_rotura),
-    foreign key (id_producto) references productos (id_producto),
-    foreign key (id_rotura) references rotura (id_rotura)
-);
 
-create table notas_pedidos
+create table IF NOT EXISTS notas_pedidos
 (
     consecutivo    int primary key auto_increment,
     fecha_entrega  date,
     hora_entrega   time,
     novedad        varchar(100),
-    cedula_cliente varchar(30),
+    cedula_cliente bigint,
     id_estado      int,
     id_pyp         int,
     cedula         varchar(40),
@@ -158,7 +150,7 @@ create table notas_pedidos
 );
 
 
-create table notas_productos_pedidos
+create table IF NOT EXISTS notas_productos_pedidos
 (
     cantidad    int,
     consecutivo int,
@@ -169,7 +161,7 @@ create table notas_productos_pedidos
 );
 
 
-create table producto_proveedores
+create table IF NOT EXISTS producto_proveedores
 (
     cedula      varchar(30),
     id_producto int,

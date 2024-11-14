@@ -1,9 +1,10 @@
 package com.home.proyectoFinalHomeC.entity;
 
-import com.home.proyectoFinalHomeC.entity.normalizacion.Area;
-import com.home.proyectoFinalHomeC.entity.normalizacion.Tipo_producto;
+import com.home.proyectoFinalHomeC.entity.normalizacion.*;
 import jakarta.persistence.*;
 import lombok.Data;
+
+import java.util.List;
 
 
 @Entity
@@ -30,4 +31,20 @@ public class Producto {
     @ManyToOne
     @JoinColumn(name = "id_area")
     private Area area;
+
+    @OneToMany(mappedBy = "producto",cascade = CascadeType.ALL)
+    private List<Venta_producto> listaVentaProducto;
+
+    @OneToMany(mappedBy = "producto", cascade = CascadeType.ALL)
+    private List<Rotura> listaRoturas;
+
+    @OneToMany(mappedBy = "producto", cascade = CascadeType.ALL)
+    private List<NotaProductoPedido> listaVentaProdcuto;
+
+
+
+    @OneToMany(mappedBy = "producto", cascade = CascadeType.ALL)
+    private List<ProductoProveedor> listaProductoProveedor;
+
+
 }
