@@ -18,6 +18,5 @@ public class Tipo_producto {
     private String descripcion;
 
     @OneToMany(mappedBy = "tipo_producto", cascade = CascadeType.ALL)
-    @Column(nullable = false)
     private List<Producto> lista_productos;
 }

@@ -17,10 +17,8 @@ public class NotaPedido {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long  consecutivo;
-    @Column(nullable = false)
-    private LocalDate fehaEntrega;
-    @Column(nullable = false)
-    private LocalTime time;
+
+
     @Column(nullable = false)
     private String novedad;
 
@@ -32,9 +30,7 @@ public class NotaPedido {
     @JoinColumn(name= "id_estado")
     private Estado estado;
 
-    @ManyToOne
-    @JoinColumn(name= "id_pyp")
-    private Pyp pyp;
+
 
 
     @ManyToOne

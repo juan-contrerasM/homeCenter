@@ -1,7 +1,7 @@
 package com.home.proyectoFinalHomeC.entity.normalizacion;
 
-import com.home.proyectoFinalHomeC.Provedor;
 import com.home.proyectoFinalHomeC.entity.Producto;
+import com.home.proyectoFinalHomeC.entity.Provedoor;
 import jakarta.persistence.*;
 import lombok.Data;
 
@@ -16,7 +16,7 @@ public class ProductoProveedor {
     @MapsId("cedula")
     @ManyToOne
     @JoinColumn(name = "cedula", insertable = false, updatable = false)
-    private Provedor proveedor;
+    private Provedoor proveedor;
     @MapsId("id_producto")
     @ManyToOne
     @JoinColumn(name = "id_producto", insertable = false, updatable = false)

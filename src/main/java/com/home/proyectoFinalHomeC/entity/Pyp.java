@@ -18,12 +18,10 @@ public class Pyp {
     @Column(nullable = false)
     private String nombre;
     @Column(nullable = false)
-    private int cantidad_recuperaciones;
+    private int cantida_recuperaciones;
     @Column(nullable = false)
     private String pypcol;
 
 
-    @OneToMany(mappedBy = "pyp",cascade = CascadeType.ALL)
-    private List<NotaPedido> listaNotasPedido;
 
 }

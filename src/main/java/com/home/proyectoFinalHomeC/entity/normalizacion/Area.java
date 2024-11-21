@@ -19,7 +19,6 @@ public class Area {
     private String descripcion;
 
     @OneToMany(mappedBy = "area", cascade = CascadeType.ALL)
-    @Column(nullable = false)
     private List<Producto> listaProductos;
 
 }

@@ -17,10 +17,10 @@ public class Provedoor {
     private String cedula;
     private String nombre;
     private String rut;
-    private float descuernto;
+    private float descuento;
 
-    @OneToMany(mappedBy = "proveedor", cascade = CascadeType.ALL)
-    private List<ProductoProveedor> listaProductoProveedor;
+//    @OneToMany(mappedBy = "proveedor", cascade = CascadeType.ALL)
+//    private List<ProductoProveedor> listaProductoProveedor;
 
 
 }
