@@ -18,7 +18,7 @@ public class Area {
     @Column(name = "descripcion", nullable = false)
     private String descripcion;
 
-    @OneToMany(mappedBy = "area", cascade = CascadeType.ALL)
-    private List<Producto> listaProductos;
+   // @OneToMany(mappedBy = "area", cascade = CascadeType.ALL)
+    //private List<Producto> listaProductos;
 
 }

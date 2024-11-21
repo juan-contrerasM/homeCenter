@@ -1,5 +1,6 @@
 package com.home.proyectoFinalHomeC.mapping.DTO;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.home.proyectoFinalHomeC.entity.NotaPedido;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
@@ -23,7 +24,6 @@ public class OperadorDto {
     private String nombre;
     @NotBlank(message = "este campo no puede estar vacio")
     private String apellido;
-    //@NotBlank(message = "este campo no puede ser nulo")
     private Date fecha_nacimiento;
     @NotNull(message = "este campo no puede estar vacio")
     private String indicador_aislamiento;

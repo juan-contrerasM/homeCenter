@@ -23,6 +23,7 @@ public class ControllerOperador {
 
     @PostMapping("guardarOperador")
     private ResponseEntity<?> guardarOperador(@RequestBody @Valid OperadorDto operadorDto) {
+        System.out.println(operadorDto.getFecha_nacimiento());
         operadorRepository.guardarOperador(operadorDto.getCedula(),
                 operadorDto.getNombre(),
                 operadorDto.getApellido(),
