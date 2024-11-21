@@ -3,6 +3,7 @@ package com.home.proyectoFinalHomeC.entity;
 import jakarta.persistence.*;
 import lombok.Data;
 
+import java.sql.Date;
 import java.time.LocalDate;
 import java.util.List;
 
@@ -18,10 +19,10 @@ public class Operador {
     @Column(nullable = false)
     private String apellido;
     @Column(nullable = false)
-    private LocalDate fecha_nacimiento;
+    private Date fecha_nacimiento;
     @Column(nullable = false)
     private String indicador_aislamiento;
 
-    @OneToMany(mappedBy = "operador", cascade = CascadeType.ALL)
-    private List<NotaPedido> nostasPedidos;
+    // @OneToMany(mappedBy = "operador", cascade = CascadeType.ALL)
+    //private List<NotaPedido> nostasPedidos;
 }

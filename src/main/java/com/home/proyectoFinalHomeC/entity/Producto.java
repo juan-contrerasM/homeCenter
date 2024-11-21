@@ -23,7 +23,6 @@ public class Producto {
     private Integer cantidad;
 
 
-
     @ManyToOne
     @JoinColumn(name = "id_tipo_producto")
     private Tipo_producto tipo_producto;
