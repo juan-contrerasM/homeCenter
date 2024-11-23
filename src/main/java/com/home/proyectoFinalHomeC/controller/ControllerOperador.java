@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @RestController
@@ -23,11 +24,11 @@ public class ControllerOperador {
 
     @PostMapping("guardarOperador")
     private ResponseEntity<?> guardarOperador(@RequestBody @Valid OperadorDto operadorDto) {
-        System.out.println(operadorDto.getFecha_nacimiento());
+
         operadorRepository.guardarOperador(operadorDto.getCedula(),
                 operadorDto.getNombre(),
                 operadorDto.getApellido(),
-                operadorDto.getFecha_nacimiento().toLocalDate(),
+                LocalDate.now(),
                 operadorDto.getIndicador_aislamiento());
         return ResponseEntity.ok(operadorDto);
     }
@@ -37,7 +38,7 @@ public class ControllerOperador {
         int filasAfectadas = operadorRepository.actualizarOperador(cedula,
                 operadorDto.getNombre(),
                 operadorDto.getApellido(),
-                operadorDto.getFecha_nacimiento().toLocalDate(),
+                LocalDate.now(),
                 operadorDto.getIndicador_aislamiento());
         if (filasAfectadas > 0) {
             Operador operador = operadorRepository.obtenerOperador(cedula);

@@ -24,7 +24,7 @@ public class OperadorDto {
     private String nombre;
     @NotBlank(message = "este campo no puede estar vacio")
     private String apellido;
-    private Date fecha_nacimiento;
+
     @NotNull(message = "este campo no puede estar vacio")
     private String indicador_aislamiento;
 
